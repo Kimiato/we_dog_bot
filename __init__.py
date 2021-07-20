@@ -24,4 +24,4 @@ async def push_we_dog():
 @we_dog.on_fullmatch('舔狗日记', only_to_me=True)
 async def reply_we_dog(bot, ev):
     we_dog_words = filemanager.get_random_words()
-    await bot.send(ev, we_dog_words, at_sender=True)
+    await bot.send(ev, '\n' + we_dog_words, at_sender=True)
