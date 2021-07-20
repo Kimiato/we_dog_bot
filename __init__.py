@@ -8,7 +8,7 @@ help_message = """
 @我也可以写一篇日记给你
 """
 
-we_dog = Service('dog_diary', enable_on_default=False, help_="舔狗日记", bundle='帮助通用')
+we_dog = Service('dog_diary', enable_on_default=False, help_="舔狗日记")
 
 filemanager = FileManager()
 
