@@ -1,4 +1,6 @@
 import os
+import time
+import datetime
 from random import randint
 
 import requests
@@ -47,4 +49,14 @@ class FileManager:
 
     def get_random_words(self):
         random_int = randint(0, len(self.content_list)-1)
-        return self.content_list[random_int]
+        random_words = self.get_today_desc() + '\n' + self.content_list[random_int]
+        return random_words
+
+    def get_time_desc(self):
+        today = datetime.datetime.today()
+        today_str = today.strftime("%Y年%m月%d日")
+        return today_str
+
+    def get_today_desc(self):
+        weathers = ['晴', '雨', '阴']
+        return self.get_time_desc() + ' ' + weathers[randint(0, len(weathers) - 1)]
