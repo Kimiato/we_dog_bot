@@ -9,6 +9,7 @@ import requests
 class FileManager:
 
     def __init__(self) -> None:
+        self.res_url = "http://abiu.fun/download/we_dog_bot/"
         self.check_file()
         self.set_file_content()
 
@@ -30,12 +31,16 @@ class FileManager:
         return True
 
     def download_file(self):
-        request = requests.get('http://download.kway.site/we_dog_bot/dog.txt')
+        request = requests.get(f'{self.res_url}dog.txt')
         with open(self.dog_txt_path, 'wb') as f:
             f.write(request.content)
 
     def check_version(self):
-        request = requests.get('http://download.kway.site/we_dog_bot/version.txt')
+        try:
+            request = requests.get(f'{self.res_url}version.txt')
+        except Exception:
+            print("舔狗we_dog.txt 下载失败")
+            return True  # 如果资源无法访问，使用本地资源
         remote_version = float(request.text)
         with open(self.dog_txt_path, 'r', encoding='utf-8') as f:
             local_version = float(f.readline().split('=')[-1])
